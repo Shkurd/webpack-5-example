@@ -1,0 +1,112 @@
+.min-list {
+  padding: 0;
+  margin: 0;
+}
+
+.min-list li {
+  list-style: none;
+}
+
+.no-margin {margin: 0}
+p.no-margin-bottom {margin-bottom: 0!important;}
+.nu {text-decoration: none}
+.nu:hover {text-decoration: underline}
+
+.t-left {text-align: left}
+.t-right {text-align: right}
+.t-center {text-align: center}
+
+.t-small {font-size: .85rem}
+
+.float-left {float: left}
+.float-right {float: right}
+
+.hide {
+  display: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.white {
+  color: white;
+}
+.dark {
+  color: $darkBlue;
+}
+.red {
+  color: $mainRed;
+}
+.registration {
+  font-size: 1.2em;
+  position: relative;
+  top:-3px;
+}
+
+.trademark {
+  font-size: 1em;
+  position: relative;
+  top:-3px;
+}
+
+.button-main {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 28px;
+  color: $white;
+  text-align: center;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  // background: linear-gradient(180deg,#d94248 0,#88151a 100%);
+  // background: linear-gradient(180deg, #32c47e 0, #0f7444 100%);
+  background:$mainRed;
+  border-radius: 2px;
+
+  &:hover {
+      // background: linear-gradient(#f75b62,#cc454c);
+      cursor: pointer;
+      background: #ec5553;
+  }
+}
+
+.warning-message {
+  //padding-top: 6px;
+  padding-left: 2px;
+  margin-top: 2px;
+  color: $mainRed;
+  font-size: 13px;
+  font-weight: 300;
+  position: absolute;
+
+  @media screen and (max-width: $max-tablet-width) {
+    margin-top: 1px;
+    font-size: 12px;
+  }
+
+  &-right {
+      text-align: right;
+      position: absolute;
+      width: 100%;
+  }
+
+  &-gdpr {
+      top: 41px;
+      text-align: left;
+      position: absolute;
+      left: 0;
+
+      @media screen and (max-width: $max-landscape-width) {
+          top: 18px;
+      }
+      
+  }
+}
+
+.messages-error {
+  color: red;
+  padding-bottom: 5px;
+}

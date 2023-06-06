@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+// @import "~normalize.scss";
+
+/* SASS and Global'ish Stuff */
+// @import "base/fonts.scss";
+@import "base/variables.scss";
+@import "base/baseline.scss";
+@import "base/utility-classes.scss";
+@import "base/grid.scss";
+
+/*COMPONENTS*/
+@import "general/header.scss";
+@import "general/footer.scss";
+@import "components/main-block.scss";

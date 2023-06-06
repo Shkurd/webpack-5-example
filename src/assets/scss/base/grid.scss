@@ -1,0 +1,33 @@
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+
+        @media screen and (min-width: $min-lg-desktop-width) {
+            max-width: $super-extra-large-width;
+    }
+        @media screen and (max-width: $max-md-desktop-width) and (min-width: $min-md-desktop-width) {
+            max-width: $super-extra-large-width;
+    }
+        @media screen and (max-width: $max-desktop-width) and (min-width: $min-desktop-width) {
+            // max-width:  $large-width;
+            max-width: 1100px;
+            padding-right: 20px;
+            padding-left: 20px;
+    }
+        @media screen and (max-width: $max-tablet-width) and (min-width: $min-tablet-width) {
+            max-width: none;
+            padding-right: 40px;
+            padding-left: 40px;
+    }
+        @media screen and (max-width: $max-landscape-width) and (min-width: $min-landscape-width) {
+            max-width: none;
+            padding-right: 20px;
+            padding-left: 20px;
+    }
+        @media screen and (max-width: $max-mobile-width) {
+            padding-right: 20px;
+            padding-left: 20px;
+    }
+}
