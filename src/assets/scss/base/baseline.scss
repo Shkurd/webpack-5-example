@@ -4,12 +4,11 @@
 
 html, body {
   position: relative;
-  // height: 100%;
-  // overflow: hidden;
 }
 
 html{
   scroll-behavior: smooth;
+
 }
 
 body {
@@ -20,12 +19,13 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  min-height: 100vh;
 }
 
 main {
   width: 100%;
   overflow: hidden;
+  flex: 1;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -56,11 +56,6 @@ h2 {
   font-weight: 700;
   font-size: 48px;
   line-height: 48px;
-
-  // @media screen and (max-width: $min-lg-desktop-width) {
-  //   font-size: 56px;
-  //   font-weight: bold;
-  // }                                  
 
   @media screen and (max-width: $max-tablet-width) {
     font-weight: 700;

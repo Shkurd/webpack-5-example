@@ -1,23 +1,27 @@
 {
   "name": "webpack-5-starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Initial webpack-5 project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack serve"
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.8",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/preset-env": "^7.16.11",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.6",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
@@ -27,6 +31,9 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
-    "axios": "^0.26.1"
+    "axios": "^0.26.1",
+    "cross-env": "^7.0.3",
+    "ejs-webpack-loader": "^2.2.2",
+    "normalize.css": "^8.0.1"
   }
 }

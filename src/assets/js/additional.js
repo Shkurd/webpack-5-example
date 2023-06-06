@@ -1,2 +1,2 @@
-import '../scss/thank-you.scss';
+console.log('Файл additional.js включен в main.js')
 
