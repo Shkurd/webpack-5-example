@@ -100,7 +100,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html',
-      minify: {
+      minify: { // не конфликтует с минификацией на основе опций "minimize", можно довнести дополнительно какие-то настройки
         removeComments: isProd,
         collapseWhitespace: isProd
       },
