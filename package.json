@@ -8,8 +8,8 @@
     "dev": "cross-env NODE_ENV=development webpack serve"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Anton",
+  "license": "NO",
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
