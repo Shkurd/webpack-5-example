@@ -1,9 +1,7 @@
-const path = require('path')
+path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// const BundleAnalyzerPlugin =
-//   require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin')
@@ -12,7 +10,6 @@ const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
 const filename = ext => isDev ? `[name].bundle.${ext}` : `./${ext}/[name].[hash].bundle.${ext}`;
-
 module.exports = {
   mode: 'development',
   entry: {
@@ -20,11 +17,11 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name][contenthash].js',
+    // filename: '[name].[contenthash].main.js',
+    filename: 'assets/'+ filename('js').replace('bundle', 'main'),
     clean: true,
     assetModuleFilename: 'images/[name][ext]',
   },
-  devtool: 'source-map',
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'dist'),
@@ -38,7 +35,16 @@ module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
-      new TerserPlugin(),
+      new TerserPlugin(
+        {
+          terserOptions: {
+              format: {
+                  comments: false,
+              },
+          },
+          extractComments: false,
+        }
+      ),
       new CssMinimizerPlugin(),
       new HtmlMinimizerPlugin(),
     ]
@@ -102,9 +108,8 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: 'assets/' + filename('css'),
+      filename: 'assets/' + filename('css').replace('bundle', 'main'),
     }),
 
-    // new BundleAnalyzerPlugin(),
   ],
 }
