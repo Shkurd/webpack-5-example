@@ -20,7 +20,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name][contenthash].js',
     clean: true,
-    assetModuleFilename: '[name][ext]',
+    // assetModuleFilename: '[name][ext]',
+    assetModuleFilename: 'images/[name][ext]',
   },
   devtool: 'source-map',
   devServer: {
@@ -64,20 +65,29 @@ module.exports = {
           },
         },
       },
+      // {
+      //   test: /\.(png|jpe?g|gif|svg)$/i,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[path][name].[ext]',
+      //         context: path.resolve(__dirname, "src/"),
+      //         outputPath: '/',
+      //         publicPath: '../',
+      //         useRelativePath: true,
+      //       }
+      //     }
+      //   ]
+      // },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]',
-              context: path.resolve(__dirname, "src/"),
-              outputPath: '/',
-              publicPath: '../',
-              useRelativePath: true,
-            }
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8192
           }
-        ]
+        }
       },
     ],
   },
@@ -104,6 +114,6 @@ module.exports = {
       filename: 'assets/' + filename('css'),
     }),
    
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 }
