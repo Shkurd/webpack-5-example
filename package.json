@@ -34,7 +34,9 @@
   "dependencies": {
     "axios": "^0.26.1",
     "cross-env": "^7.0.3",
+    "css-minimizer-webpack-plugin": "^5.0.0",
     "ejs-webpack-loader": "^2.2.2",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "terser-webpack-plugin": "^5.3.9"
   }
 }

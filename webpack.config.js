@@ -2,9 +2,11 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-
+// const BundleAnalyzerPlugin =
+//   require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const TerserPlugin = require('terser-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
@@ -20,7 +22,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name][contenthash].js',
     clean: true,
-    // assetModuleFilename: '[name][ext]',
     assetModuleFilename: 'images/[name][ext]',
   },
   devtool: 'source-map',
@@ -34,9 +35,16 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
+      new HtmlMinimizerPlugin(),
+    ]
+  },
   module: {
     rules: [
-
       {
         test: /\.ejs$/,
         use: [
@@ -65,21 +73,6 @@ module.exports = {
           },
         },
       },
-      // {
-      //   test: /\.(png|jpe?g|gif|svg)$/i,
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         name: '[path][name].[ext]',
-      //         context: path.resolve(__dirname, "src/"),
-      //         outputPath: '/',
-      //         publicPath: '../',
-      //         useRelativePath: true,
-      //       }
-      //     }
-      //   ]
-      // },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: "asset",
@@ -106,14 +99,12 @@ module.exports = {
         collapseWhitespace: isProd
       },
       inject: 'body', // добавляем скрипты в конец body
-      // chunksSortMode: 'manual', // указываем порядок добавления скриптов
-      // chunks: ['vendors', 'bundle'], // порядок добавления скриптов
     }),
 
     new MiniCssExtractPlugin({
       filename: 'assets/' + filename('css'),
     }),
-   
+
     // new BundleAnalyzerPlugin(),
   ],
 }
