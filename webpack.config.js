@@ -20,7 +20,7 @@ module.exports = {
     // filename: '[name].[contenthash].main.js',
     filename: 'assets/'+ filename('js').replace('bundle', 'main'),
     clean: true,
-    assetModuleFilename: 'images/[name][ext]',
+    // assetModuleFilename: 'images/[name][ext]',
   },
   devServer: {
     static: {
@@ -81,7 +81,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        type: "asset",
+        type: "asset/inline",
         parser: {
           dataUrlCondition: {
             maxSize: 8192
