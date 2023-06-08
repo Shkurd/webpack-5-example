@@ -17,10 +17,9 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    // filename: '[name].[contenthash].main.js',
     filename: 'assets/'+ filename('js').replace('bundle', 'main'),
     clean: true,
-    // assetModuleFilename: 'images/[name][ext]',
+    assetModuleFilename: 'assets/images/copied/[name][ext]',
   },
   devServer: {
     static: {
@@ -79,9 +78,13 @@ module.exports = {
           },
         },
       },
+      // {
+      //   test: /\.html$/i,
+      //   loader: 'html-loader',
+      // },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        type: "asset/inline",
+        type: 'asset/resource',
         parser: {
           dataUrlCondition: {
             maxSize: 8192
@@ -100,6 +103,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html',
+
+
       minify: { // не конфликтует с минификацией на основе опций "minimize", можно довнести дополнительно какие-то настройки
         removeComments: isProd,
         collapseWhitespace: isProd

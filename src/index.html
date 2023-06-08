@@ -8,8 +8,10 @@
     <meta name="description" content="Init webpack 5 project">
 </head>
 <body>
+  <!-- <%= require('html-loader!../assets/components/general/header.html') %> такой подход в более не работает. Он удален из новых верси html-loader поэтому использую для подключения частей html ejs -->
   <%= require('./assets/components/general/header.ejs')() %>
   <main class="main">
+    <img width="180" src="./assets/images/jpg/test.jpg" alt="test.jpg img file">
     <%= require('./assets/components/main-block.ejs')() %>
   </main>
   <%= require('./assets/components/general/footer.ejs')() %>
