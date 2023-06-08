@@ -10,7 +10,6 @@ const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
 const filename = ext => isDev ? `[name].bundle.${ext}` : `./${ext}/[name].[hash].bundle.${ext}`;
-const filenameForIMG = ext => isDev ? `${ext}/[name].${ext}` : `./${ext}/[name].${ext}`;
 
 module.exports = {
   mode: 'development',
