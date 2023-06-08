@@ -10,6 +10,8 @@ const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
 const filename = ext => isDev ? `[name].bundle.${ext}` : `./${ext}/[name].[hash].bundle.${ext}`;
+const filenameForIMG = ext => isDev ? `${ext}/[name].${ext}` : `./${ext}/[name].${ext}`;
+
 module.exports = {
   mode: 'development',
   entry: {
@@ -19,6 +21,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'assets/'+ filename('js').replace('bundle', 'main'),
     clean: true,
+    // assetModuleFilename: 'assets/images/[name][ext]',
     assetModuleFilename: 'assets/images/copied/[name][ext]',
   },
   devServer: {
@@ -85,6 +88,9 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
+        // generator: {
+        //   filename: 'assets/images/'
+        // },
         parser: {
           dataUrlCondition: {
             maxSize: 8192
@@ -103,8 +109,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html',
-
-
       minify: { // не конфликтует с минификацией на основе опций "minimize", можно довнести дополнительно какие-то настройки
         removeComments: isProd,
         collapseWhitespace: isProd
